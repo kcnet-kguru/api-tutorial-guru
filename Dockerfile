@@ -4,5 +4,5 @@ WORKDIR .
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 COPY . .
-RUN cd app
+WORKDIR app
 CMD ["gunicorn", "--bind", ":8000", "--workers", "3", "app.wsgi:application"]
